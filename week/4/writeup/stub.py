@@ -79,7 +79,7 @@ def execute_cmd():
                 s.close()
         elif user_input == "help":
             print("shell Drop into an interactive shell and allow users to gracefully exit\n\
-                pull <remote-path> <local-path> Download files\nhelp Shows this help menu\nquit Quit the shell.\n")
+pull <remote-path> <local-path> Download files\nhelp Shows this help menu\nquit Quit the shell.")
         elif user_input == "quit":
             break
         else:
