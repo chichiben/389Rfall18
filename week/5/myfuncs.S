@@ -6,7 +6,12 @@ my_memset:
         mov rbp, rsp  ;moves up the base pointer to the top of the stack to create a new frame
 
         ;your code goes here!
-
+        mov rcx, rdx  ;set counter for loop
+        mov rax, 0    ;set index to 0
+        set:
+           mov byte [rdi+rax], sil ;set the array element to val
+           inc rax		   ;increase the index
+        loop set
 
         leave         ;moves down the stack pointer to the current base pointer,
                       ;and restores our saved base pointer, effectively
@@ -23,6 +28,13 @@ my_strncpy:
         ;;;;;;;;;;;;;;;;;;;;;
         ;your code goes here!
         ;;;;;;;;;;;;;;;;;;;;;
+
+       mov rcx, rdx   ;set counter for loop
+       mov rax, 0     ;set index to 0
+       copy:
+          mov byte [rdi+rax], [rsi+rax]
+          inc rax
+       loop copy
 
 
         leave         ;moves down the stack pointer to the current base pointer,
