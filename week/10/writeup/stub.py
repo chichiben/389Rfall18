@@ -25,6 +25,7 @@ idx = data_list.index('hash:')
 hash = data_list[idx + 1]
 # a legit hash of secret + message goes here, obtained from signing a message
 legit =  hash.strip()
+print("legit hash: " + legit)
 
 # initialize hash object with state of a vulnerable hash
 fake_md5 = md5py.new('A' * 64)
@@ -37,7 +38,7 @@ fake_md5.update(malicious)
 
 # fake_hash is the hash for md5(secret + message + padding + malicious)
 fake_hash = fake_md5.hexdigest()
-print(fake_hash)
+print("fake hash: " + fake_hash)
 
 
 #############################
@@ -70,6 +71,7 @@ while secret_len <= 15:
     #                     = md5(secret + message + padding + malicious)
     #                     = fake_hash
     payload = message + padding + malicious
+    print("payload: " + repr(payload))
     # send `fake_hash` and `payload` to server (manually or with sockets)
     s.send(' 2\n')
     data = s.recv(1024)
